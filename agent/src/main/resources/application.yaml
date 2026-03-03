@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: chat-mind-agent
+  datasource:
+    url: jdbc:postgresql://localhost:5432/chatmind
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: your-email
+    password: your-password # 邮箱授权码
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  ai:
+    deepseek:
+      api-key: your-api-key
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-chat
+    zhipuai:
+      api-key: your-api-key
+      base-url: https://open.bigmodel.cn/api/paas
+      chat:
+        options:
+          model: glm-4.6
+
+mybatis:
+  type-aliases-package: fun.kmoon.agent.model.entity
+  mapper-locations: classpath:mapper/*.xml
+  type-handlers-package: fun.kmoon.agent.typehandler
+
+document:
+  storage:
+    base-path: ./data/documents
